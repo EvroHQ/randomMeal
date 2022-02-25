@@ -45,22 +45,22 @@ const menu = {
         const appetizer = this.getRandomDishFromCourse('appetizers');
         const main = this.getRandomDishFromCourse('mains');
         const dessert = this.getRandomDishFromCourse('desserts');
-        const totalPrice = appetizer.price + main.price + dessert.price;
-        return `Your meal is ${appetizer.name}, ${main.name}, ${dessert.name} and the total price is ${totalPrice}€.`;
+        const totalPrice = Math.round((appetizer.price + main.price + dessert.price + Number.EPSILON) * 100) / 100;
+        return `Your meal is ${appetizer.name}, ${main.name}, ${dessert.name} and the total price is: ${totalPrice}€.`;
     }
 };
 
-menu.addDishToCourse('appetizers', 'salad', 4.80);
-menu.addDishToCourse('appetizers', 'wings', 3.20);
-menu.addDishToCourse('appetizers', 'fries', 4.25);
+menu.addDishToCourse('appetizers', 'Salad', 4.80);
+menu.addDishToCourse('appetizers', 'Wings', 3.20);
+menu.addDishToCourse('appetizers', 'Fries', 4.25);
 
-menu.addDishToCourse('mains', 'steak', 16.40);
-menu.addDishToCourse('mains', 'entrecôte', 21.50);
-menu.addDishToCourse('mains', 'brochette', 14.70);
+menu.addDishToCourse('mains', 'Steak', 16.40);
+menu.addDishToCourse('mains', 'Entrecôte', 21.50);
+menu.addDishToCourse('mains', 'Brochette', 14.70);
 
-menu.addDishToCourse('desserts', 'moelleux', 7.20);
-menu.addDishToCourse('desserts', 'banana split', 8.00);
-menu.addDishToCourse('desserts', 'caffé', 4.30);
+menu.addDishToCourse('desserts', 'Moelleux', 7.20);
+menu.addDishToCourse('desserts', 'Banana split', 8.00);
+menu.addDishToCourse('desserts', 'Coffee', 4.30);
 
 const meal = menu.generateRandomMeal();
 console.log(meal);
